@@ -1,0 +1,44 @@
+{
+  "nodes": {
+    "nixpkgs": {
+      "locked": {
+        "lastModified": 1778737229,
+        "narHash": "sha256-6xWoytx8jFW4PF1GjRm/i/53trbpKGfz6zjzQGBr4cI=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "d7a713c0b7e47c908258e71cba7a2d77cc8d71d5",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-25.11",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "root": {
+      "inputs": {
+        "nixpkgs": "nixpkgs",
+        "sandbox-runtime": "sandbox-runtime"
+      }
+    },
+    "sandbox-runtime": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1778523887,
+        "narHash": "sha256-/bvSbkW3cEopq6YHPS36uHEN53dVO5rhUoXt/nWdsRs=",
+        "owner": "anthropic-experimental",
+        "repo": "sandbox-runtime",
+        "rev": "bdb4ea6261583bfb353a45efb2ba3394ff044c8d",
+        "type": "github"
+      },
+      "original": {
+        "owner": "anthropic-experimental",
+        "repo": "sandbox-runtime",
+        "type": "github"
+      }
+    }
+  },
+  "root": "root",
+  "version": 7
+}
