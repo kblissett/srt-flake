@@ -7,13 +7,13 @@ Nix flake for building [Anthropic Sandbox Runtime (ASRT)](https://github.com/ant
 Run directly:
 
 ```sh
-nix run github:kevinblissett/srt-flake -- <args>
+nix run github:kblissett/srt-flake -- <args>
 ```
 
 Or install into a profile:
 
 ```sh
-nix profile install github:kevinblissett/srt-flake
+nix profile install github:kblissett/srt-flake
 srt <args>
 ```
 
