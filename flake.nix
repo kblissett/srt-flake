@@ -4,7 +4,7 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
     sandbox-runtime = {
-      url = "github:anthropic-experimental/sandbox-runtime";
+      url = "github:anthropic-experimental/sandbox-runtime/v0.0.52";
       flake = false;
     };
   };
@@ -21,10 +21,10 @@
     {
       packages.aarch64-darwin.default = pkgs.buildNpmPackage {
         pname = "sandbox-runtime";
-        version = "0.0.51";
+        version = "0.0.52";
         src = sandbox-runtime;
 
-        npmDepsHash = "sha256-L/BJ0KCBYHAA6BaYZbzNFVPHJZHGnDnpZFo9XepKc4s=";
+        npmDepsHash = "sha256-IFf65G1v3JtjjH7o8gS68VongLIP3WuKmD/om41yRts=";
 
         buildPhase = ''
           runHook preBuild
@@ -56,6 +56,32 @@
           mainProgram = "srt";
         };
       };
+
+      checks.aarch64-darwin.tests = self.packages.aarch64-darwin.default.overrideAttrs (old: {
+        doCheck = true;
+        nativeBuildInputs = (old.nativeBuildInputs or [ ]) ++ [
+          pkgs.bun
+          pkgs.bash
+          pkgs.ripgrep
+          pkgs.curl
+        ];
+        # sandbox-exec can't nest inside the Nix build sandbox, so exclude
+        # test files that spawn seatbelt-wrapped processes
+        checkPhase = ''
+          runHook preCheck
+          bun test $(find test -name '*.test.ts' \
+            ! -name 'cli.test.ts' \
+            ! -name 'control-fd.test.ts' \
+            ! -name 'macos-seatbelt.test.ts' \
+            ! -name 'macos-pty.test.ts' \
+            ! -name 'macos-allow-local-binding.test.ts' \
+            ! -name 'symlink-boundary.test.ts' \
+            ! -name 'allow-read.test.ts' \
+            ! -name 'mandatory-deny-paths.test.ts' \
+            ! -name 'tls-terminate-trust-env.test.ts')
+          runHook postCheck
+        '';
+      });
 
       apps.aarch64-darwin.default = {
         type = "app";

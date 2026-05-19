@@ -25,15 +25,16 @@
     "sandbox-runtime": {
       "flake": false,
       "locked": {
-        "lastModified": 1778523887,
-        "narHash": "sha256-/bvSbkW3cEopq6YHPS36uHEN53dVO5rhUoXt/nWdsRs=",
+        "lastModified": 1779149957,
+        "narHash": "sha256-EcRnx4j8YdBvhCNgWdfzvgP6SgvXQfqu8aNBjeM1YQM=",
         "owner": "anthropic-experimental",
         "repo": "sandbox-runtime",
-        "rev": "bdb4ea6261583bfb353a45efb2ba3394ff044c8d",
+        "rev": "0bc1e3cc958782d4e9a3cbe44dc617963558a474",
         "type": "github"
       },
       "original": {
         "owner": "anthropic-experimental",
+        "ref": "v0.0.52",
         "repo": "sandbox-runtime",
         "type": "github"
       }
